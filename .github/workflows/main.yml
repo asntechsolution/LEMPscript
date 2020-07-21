@@ -19,12 +19,13 @@ jobs:
       run: |
         composer install -o
         npm install
+
     - name: Build
       run: npm run build
     
     - name: Sync
       env:
-        dest: 'deploy@13.55.12.1:/home/deploy/www'
+        dest: 'ssh-user@example.com:/mydir/wp-content/themes/mytheme’
       run: |
         echo "${{secrets.DEPLOY_KEY}}" > deploy_key
         chmod 600 ./deploy_key
